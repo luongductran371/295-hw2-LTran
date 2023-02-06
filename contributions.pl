@@ -9,7 +9,7 @@ foreach my $log (@logs) {
     my ($email, $timestamp, $commit_message) = split(',', $log);
     if (exists $contributions{$email}) {
         $contributions{$email}{'count'}++;
-        $contributions{$email}{'latest_commit'} = $timestamp if $timestamp > $contributions{$email}{'latest_commit'};
+        $contributions{$email}{'first_commit'} = $timestamp if $timestamp < $contributions{$email}{'first_commit'};
     } else {
         $contributions{$email} = {
             'count' => 1,
